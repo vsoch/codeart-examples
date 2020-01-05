@@ -33,8 +33,11 @@ code.threshold_files(thresh=100)
 # Let's train a word2vec model, size 3 for RGB space, for each of those extensions
 code.train(extensions=[".py", "", ".patch"])
 
-# We can also train a single model for those extensions
-code.train_all(extensions=[".py", "", ".patch"])
+# We can also train a single model for some set of extensions
+code.train_all(extensions=[".py", "", ".patch", ".txt"])
+
+# Or just train for all extensions
+code.train_all()
 
 # We now have a model for each extension (and all)
 code.models
@@ -85,3 +88,19 @@ code.make_art(extension=".py", outdir="images", vectors=vectors)
 
 # The gallery example here will plot each language, using the same model
 gallery = code.make_gallery(extensions=["", ".py", ".patch"])
+
+
+###
+## Example 5: Generate Interactive Web Interface
+###
+
+from codeart.graphics import generate_interactive_colormap
+
+vectors = code.get_vectors('all')
+counts = code.get_color_percentages(groups=list(code.codefiles.keys()), vectors=vectors)
+
+vectors.to_csv("spack-colormap-vectors.csv")
+counts.to_csv("spack-color-percentages.csv")
+
+tmpdir = generate_interactive_colormap(vectors=vectors, counts=counts, width=1000)
+# Output files are in web
