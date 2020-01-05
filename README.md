@@ -35,6 +35,7 @@ count of the term for the extension. For spack, most terms will be derived
 from Python files.
 
 ### Interactive
+
 The [interactive version](https://vsoch.github.io/codeart-examples/parse_repo/web/) shows the interactive color grid, where groups (in this case extensions) are colored based on salience. Click an extension to see relevant terms in the embeddings model.
 
 ### Abstract
