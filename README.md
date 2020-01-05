@@ -12,6 +12,8 @@ and then generate a color gradient lookup.
 
 Is an example project to use codeart to parse a large Python code base, determine
 year of creation using the GitHub api, and then break into groups based on the year.
+This small project helped me to develop the interactive colomap example, which
+you can view [here](https://vsoch.github.io/codeart-examples/parse_by_year/).
 
 ## Derive Colormap
 
