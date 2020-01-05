@@ -15,6 +15,13 @@ year of creation using the GitHub api, and then break into groups based on the y
 This small project helped me to develop the interactive colomap example, which
 you can view [here](https://vsoch.github.io/codeart-examples/parse_by_year/).
 
+The example also generates static images, along with a gif (animation) to
+show the change in data over time.
+
+![colormap-groups.gif](parse_by_year/colormap-groups.gif)
+
+Of course this was impossible to explore, hence why I made the interactive version.
+
 ## Derive Colormap
 
 The [derive_colormap](derive_colormap) folder an example to show working on deriving a colormap from a set of embeddings. 
