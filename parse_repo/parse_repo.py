@@ -104,7 +104,7 @@ counts = code.get_color_percentages(groups=groups, vectors=vectors)
 vectors.to_csv("spack-colormap-vectors.csv")
 counts.to_csv("spack-color-percentages.csv")
 
-# !mkdir -p sorted
-generate_interactive_sorted_colormap(vectors=vectors, counts=counts, outdir="web")
+# !mkdir -p web
+generate_interactive_colormap(vectors=vectors, counts=counts, outdir="web")
 
 # Output files are in web

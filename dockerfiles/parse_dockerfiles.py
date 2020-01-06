@@ -42,10 +42,9 @@ code.save_model(outdir=os.getcwd(), group="dockerfile")
 from codeart.graphics import save_vectors_gradient_grid
 save_vectors_gradient_grid(vectors=vectors, outfile="colors-gradient.png")
 
-# Save interactive colormap (regular and sorted)
-from codeart.graphics import generate_interactive_colormap, generate_interactive_sorted_colormap
+# Save interactive colormap (default is now sorted)
+from codeart.graphics import generate_interactive_colormap
 for folder in ['web', 'sorted']:
     os.mkdir(folder)
 
 generate_interactive_colormap(vectors=vectors, counts=counts, outdir="web")
-generate_interactive_sorted_colormap(vectors=vectors, counts=counts, outdir="sorted")
