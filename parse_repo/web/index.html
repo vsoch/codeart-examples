@@ -42,8 +42,8 @@ var div = d3.select("body").append("div")
     .attr("class", "tooltip")				
     .style("opacity", 0);
 
-var w = data['width'],
-    h = data["row_height"] * data["records"].length,
+var w = "100%",
+    h = data["row_height"] * data["rows"],
     z = data["width"] / data["colors_per_row"]
 
 var svg = d3.select("body").append("svg")
@@ -77,6 +77,9 @@ function mouseover(d) {
 
 function redraw(group) {
     svg.selectAll("rect").remove()
+    if (group == "No extension"){
+        group = "";
+    }
     key = group + "-percent"
     console.log(key);
 
@@ -97,12 +100,12 @@ function redraw(group) {
       .enter()
       .append("text")
         .attr("x", 120)
-        .attr("y", function(d,i){ return 15 + i*20}) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("y", function(d,i){ return 20 + i*16}) // 100 is where the first dot appears. 25 is the distance between dots
         .style("fill", function(d){ if (d == group) { return "black"}; return "#CCC"})
-        .text(function(d){ return d})
+        .text(function(d){ if (d==""){ return "No extension"; }; return d})
         .attr("text-anchor", "left")
         .style("cursor", "pointer")
-        .style("font", "12px sans-serif")
+        .style("font", "16px sans-serif")
         .style("font-weight", 600)
         .style("alignment-baseline", "middle")
         .on("click", function(d){
@@ -117,12 +120,12 @@ svg.selectAll("labels")
   .enter()
   .append("text")
     .attr("x", 120)
-    .attr("y", function(d,i){ return 15 + i*20}) // 100 is where the first dot appears. 25 is the distance between dots
+    .attr("y", function(d,i){ return 20 + i*16}) // 100 is where the first dot appears. 25 is the distance between dots
     .style("fill", "white")
-    .text(function(d){ return d})
+    .text(function(d){ if (d==""){ return "No extension"; }; return d})
     .attr("text-anchor", "left")
     .style("cursor", "pointer")
-    .style("font", "12px sans-serif")
+    .style("font", "16px sans-serif")
     .style("font-weight", 600)
     .style("alignment-baseline", "middle")
     .on("click", function(d){
