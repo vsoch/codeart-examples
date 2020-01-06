@@ -12,7 +12,9 @@ is limited from greens to blues. This project helped to develop the [sorted inte
 ## Parse Repo
 
 The [parse_repo](parse_repo) folder shows how to parse a repository (spack)
-and then generate a color gradient lookup.
+and then generate a color gradient lookup. The first attempt at the color grid
+[can be seen here](https://vsoch.github.io/codeart-examples/parse_repo/web/)
+and this was updated to better organize, [seen here](https://vsoch.github.io/codeart-examples/dockerfiles/sorted/)
 
 ## Parse by Year
 

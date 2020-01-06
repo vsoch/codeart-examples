@@ -94,13 +94,17 @@ gallery = code.make_gallery(extensions=["", ".py", ".patch"])
 ## Example 5: Generate Interactive Web Interface
 ###
 
-from codeart.graphics import generate_interactive_colormap
+from codeart.graphics import generate_interactive_sorted_colormap
 
+# let's only choose top extensions
+groups = list(code.threshold_files(10).keys())
 vectors = code.get_vectors('all')
-counts = code.get_color_percentages(groups=list(code.codefiles.keys()), vectors=vectors)
+counts = code.get_color_percentages(groups=groups, vectors=vectors)
 
 vectors.to_csv("spack-colormap-vectors.csv")
 counts.to_csv("spack-color-percentages.csv")
 
-tmpdir = generate_interactive_colormap(vectors=vectors, counts=counts, width=1000)
+# !mkdir -p sorted
+generate_interactive_sorted_colormap(vectors=vectors, counts=counts, outdir="web")
+
 # Output files are in web
