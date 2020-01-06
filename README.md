@@ -3,6 +3,12 @@
 This is an examples repository to supplement [codeart](https://github.com/vsoch/codeart).
 The repository was getting large so I decided to move image and data files over here.
 
+## Dockerfiles
+
+The Dockerfiles [dinosaur dataset](https://github.com/vsoch/dockerfiles) has about 100K Dockerfiles, 
+and this small example shows creating visualizations for them. The [interactive version](https://vsoch.github.io/codeart-examples/dockerfiles/web/) isnt' very useful here because we only have one file type, and the range of colors
+is limited from greens to blues. This project helped to develop the [sorted interactive version](https://vsoch.github.io/codeart-examples/dockerfiles/sorted/) of the colormap.
+
 ## Parse Repo
 
 The [parse_repo](parse_repo) folder shows how to parse a repository (spack)
