@@ -21,7 +21,8 @@ and this was updated to better organize, [seen here](https://vsoch.github.io/cod
 Is an example project to use codeart to parse a large Python code base, determine
 year of creation using the GitHub api, and then break into groups based on the year.
 This small project helped me to develop the interactive colomap example, which
-you can view [here](https://vsoch.github.io/codeart-examples/parse_by_year/).
+you can view [here](https://vsoch.github.io/codeart-examples/parse_by_year/web) or
+the previous version (not sorted) [here](https://vsoch.github.io/codeart-examples/parse_by_year/web-unsorted/)
 
 The example also generates static images, along with a gif (animation) to
 show the change in data over time.

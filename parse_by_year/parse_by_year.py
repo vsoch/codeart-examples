@@ -14,8 +14,8 @@ code.add_folder(root, func=group_by_year_created)
 
 # What years did we capture?
 # {2018: [codeart-files:94536],
-#  2019: [codeart-files:9689],
-#  2020: [codeart-files:22]}
+# 2019: [codeart-files:9654],
+# 2020: [codeart-files:101]}
 
 # This doesn't capture what I intended - I want to know when I wrote the scripts,
 # not when they were downloaded from online to my computer. Let's instead write a custom function.
@@ -54,7 +54,7 @@ code = CodeBase()
 # For each repo, parse based on date created
 # We could technically use code.add_repo(repo, group=year) to add fresh,
 # but it will be easier to parse folders that we do have.
-for repo, repo_folder in recursive_find_repos(folder, return_folders=True).items():
+for repo, repo_folder in recursive_find_repos(root, return_folders=True).items():
     if repo in metadata:
         print("Adding %s" % repo_folder)
         data = metadata[repo]
@@ -63,6 +63,7 @@ for repo, repo_folder in recursive_find_repos(folder, return_folders=True).items
 
 
 # Now we have a nice span of the decade!
+code.codefiles
 # {'2011': [codeart-files:24],
 # '2014': [codeart-files:758],
 # '2015': [codeart-files:9421],
@@ -87,17 +88,13 @@ save_vectors_gradient_grid(vectors=vectors[[0,1,2]], width=6000, outfile='color-
 
 # prepare to visualize for each language in 2d
 from sklearn import decomposition
+from matplotlib.pylab import plt
 pca = decomposition.PCA(n_components=2)
 pca.fit(vectors)
 data = pca.transform(vectors)
 
 vectors["x_dim"] = data[:, 0]
 vectors["y_dim"] = data[:, 1]
-
-# Generate the 2d lookup for the image (not great because there is overlap)
-plt.scatter(vectors["x_dim"], vectors["y_dim"], c=vectors[[0, 1, 2]].to_numpy() / 255)
-plt.axis("off")
-plt.savefig("colormap-2d.png")
 
 # Calculate color percentages
 groups = code.get_groups()
@@ -145,5 +142,6 @@ with imageio.get_writer("colormap-groups.gif", mode="I", duration=2) as writer:
 
 # This is okay, but it doesn't really let me explore the data. Let's export
 # for d3. We'll combine the colors and vectors to export data
+# ! mkdir -p web
 from codeart.graphics import generate_interactive_colormap
-generate_interactive_colormap(vectors=vectors, counts=counts)
+generate_interactive_colormap(vectors=vectors[[0,1,2]], counts=counts, outdir="web")
