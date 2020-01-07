@@ -14,7 +14,26 @@ is limited from greens to blues. This project helped to develop the [sorted inte
 The [parse_repo](parse_repo) folder shows how to parse a repository (spack)
 and then generate a color gradient lookup. The first attempt at the color grid
 [can be seen here](https://vsoch.github.io/codeart-examples/parse_repo/web/)
-and this was updated to better organize, [seen here](https://vsoch.github.io/codeart-examples/parse_repo/sorted/)
+and this was updated to better organize, [seen here](https://vsoch.github.io/codeart-examples/parse_repo/sorted/).
+For the second, since the Word2Vec model derives similar embeddings represented in color,
+this means that similar colors equate to similar terms. You can explore the visualization
+with this knowledge.
+
+Finally, to generate a custom codeart image (with text), the library can
+also do that, with an [example here](https://vsoch.github.io/codeart-examples/parse_repo/text.html)
+and shown below.
+
+![parse_repo/text.png](parse_repo/text.png)
+
+
+And of course it would be more appropriate to write the name of the software as the
+[text instead](https://vsoch.github.io/codeart-examples/parse_repo/spack.html)!
+
+![parse_repo/spack-text.png](parse_repo/spack-text.png)
+
+and of course you have to zoom in to see that the pixels are actually code, colored
+based on their context thanks to Word2Vec.
+
 
 ## Parse by Year
 

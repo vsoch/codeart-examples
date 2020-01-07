@@ -7,6 +7,7 @@
 # the same model)
 
 from codeart.main import CodeBase
+from glob import glob
 
 code = CodeBase()
 code.add_repo("https://github.com/spack/spack")
@@ -94,7 +95,7 @@ gallery = code.make_gallery(extensions=["", ".py", ".patch"])
 ## Example 5: Generate Interactive Web Interface
 ###
 
-from codeart.graphics import generate_interactive_sorted_colormap
+from codeart.graphics import generate_interactive_colormap
 
 # let's only choose top extensions
 groups = list(code.threshold_files(10).keys())
@@ -108,3 +109,20 @@ counts.to_csv("spack-color-percentages.csv")
 generate_interactive_colormap(vectors=vectors, counts=counts, outdir="web")
 
 # Output files are in web
+
+###
+## Example 6: Use images to generate a true "code art"
+###
+
+from codeart.colors import generate_color_lookup
+images = glob("spack/images/*")
+color_lookup = generate_color_lookup(images)
+
+# Write to index.html, images are relative to this folder
+# This function will only work well with codefiles of uniform colors
+from codeart.graphics import generate_codeart
+generate_codeart('sunset.jpg', color_lookup, sample=10, top=100, outfile="index.html")
+
+# Generate an image with text (dinosaur!)
+generate_codeart_text('dinosaur', color_lookup, outfile="text.html")
+generate_codeart_text('spack', color_lookup, outfile="spack.html", font_size=100, width=1200)
