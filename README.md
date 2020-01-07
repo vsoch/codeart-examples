@@ -54,8 +54,24 @@ Of course this was impossible to explore, hence why I made the interactive versi
 
 The [derive_colormap](derive_colormap) folder an example to show working on deriving a colormap from a set of embeddings. 
 This means that we start with 3d, project to 2d, and then use Voronoi to
-fill border cells. I wound up doing something different, but the notebook
-is useful to get someone started with a similar project.
+fill border cells. Here is the original 3d map:
+
+![derive_colormap/colormap-3d.png](derive_colormap/colormap-3d.png)
+
+which we then project to 2d
+
+![derive_colormap/colormap-2d.png](derive_colormap/colormap-2d.png)
+
+And then the Voronoi exercise didn't work out as intended (and I pursued other methods
+instead)
+
+![derive_colormap/sploosh.png](derive_colormap/sploosh.png)
+
+And ultimately wound up developing an interactive colormap (too large to add to the 
+repo here!) that is better sorted by rows and columns (and generates in a reasonable time).
+Note that since this is for all of my Python code, the interface is a bit clunky.
+Probably something with canvas would work better here for this number of points.
+The notebook is useful to get someone started with a similar project.
 
 ## Parse Folders
 
