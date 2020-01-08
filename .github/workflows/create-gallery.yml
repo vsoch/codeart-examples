@@ -12,12 +12,14 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v1
+    - name: Setup conda environment
+      run: conda create --name codeart
     - name: Generate Text CodeArt
       run: |
-        git clone https://github.com/vsoch/codeart
-        cd codeart
-        python setup.py install
-        cd .. && mkdir -p docs
+        export PATH="/usr/share/miniconda/bin:$PATH"
+        source activate codeart
+        pip install codeart
+        mkdir -p docs
         codeart textart --root ${PWD} --text codeart --outdir docs/
     - name: Open Pull Request
       env:
@@ -35,12 +37,11 @@ jobs:
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@users.noreply.github.com"
 
-        git add docs/data.json
         git add docs/index.html
         git commit -m "Automated deployment to update codeart in docs $(date '+%Y-%m-%d')"
         git push origin "${BRANCH_FROM}"
 
         # Absolutely must download specific sha of script
-        wget https://raw.githubusercontent.com/vsoch/codeart-examples/aaae946fe15d8de19a00ba7622c0ad3ad696da0c/.github/workflows/pull_request.sh
+        wget https://raw.githubusercontent.com/vsoch/codeart-examples/7d8fe5df60570169abe965c0202aea8d59f04b24/.github/workflows/pull_request.sh
         chmod +x pull_request.sh
         /bin/bash -e pull_request.sh
