@@ -18,10 +18,8 @@ jobs:
       run: |
         export PATH="/usr/share/miniconda/bin:$PATH"
         source activate codeart
-        git clone https://github.com/vsoch/codeart
-        cd codeart
-        python setup.py install
-        cd .. && mkdir -p docs
+        pip install codeart
+        mkdir -p docs
         codeart textart --root ${PWD} --text codeart --outdir docs/
     - name: Open Pull Request
       env:
@@ -44,6 +42,6 @@ jobs:
         git push origin "${BRANCH_FROM}"
 
         # Absolutely must download specific sha of script
-        wget https://raw.githubusercontent.com/vsoch/codeart-examples/aaae946fe15d8de19a00ba7622c0ad3ad696da0c/.github/workflows/pull_request.sh
+        wget https://raw.githubusercontent.com/vsoch/codeart-examples/7d8fe5df60570169abe965c0202aea8d59f04b24/.github/workflows/pull_request.sh
         chmod +x pull_request.sh
         /bin/bash -e pull_request.sh
