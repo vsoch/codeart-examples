@@ -92,7 +92,7 @@ fill border cells. Here is the original 3d map:
 
 which we then project to 2d
 
-![derive_colormap/colormap-2d.png](derive_colormap/colormap-2d.png)
+![derive_colormap/colormap-2d-example.png](derive_colormap/colormap-2d-example.png)
 
 And then the Voronoi exercise didn't work out as intended (and I pursued other methods
 instead)
