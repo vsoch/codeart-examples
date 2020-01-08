@@ -12,8 +12,12 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v1
+    - name: Setup conda environment
+      run: conda create --name codeart
     - name: Generate Text CodeArt
       run: |
+        export PATH="/usr/share/miniconda/bin:$PATH"
+        source activate codeart
         git clone https://github.com/vsoch/codeart
         cd codeart
         python setup.py install
@@ -35,7 +39,6 @@ jobs:
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@users.noreply.github.com"
 
-        git add docs/data.json
         git add docs/index.html
         git commit -m "Automated deployment to update codeart in docs $(date '+%Y-%m-%d')"
         git push origin "${BRANCH_FROM}"
