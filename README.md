@@ -1,5 +1,7 @@
 # ColorArt Examples
 
+[![GitHub actions status](https://github.com/vsoch/codeart-examples/workflows/generate-codeart/badge.svg?branch=master)](https://github.com/vsoch/codeart-examples/actions?query=branch%3Amaster+workflow%3Agenerate-codeart)
+
 This is an examples repository to supplement [codeart](https://github.com/vsoch/codeart).
 The repository was getting large so I decided to move image and data files over here.
 
