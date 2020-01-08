@@ -1,0 +1,45 @@
+name: generate-codeart
+
+on:
+  pull_request: []
+  push:
+    branches:
+      - master
+
+jobs:
+  GenerateCodeArt:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v1
+    - name: Generate Text CodeArt
+      run: |
+        git clone https://github.com/vsoch/codeart
+        cd codeart
+        python setup.py install
+        cd .. && mkdir -p docs
+        codeart textart --root ${PWD} --text codeart --outdir docs/
+    - name: Open Pull Request
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH_AGAINST: "master"
+      run: |
+        echo "GitHub Actor: ${GITHUB_ACTOR}"
+        git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        git branch
+
+        export BRANCH_FROM="update/codeart-$(date '+%Y-%m-%d')"
+        git checkout -b "${BRANCH_FROM}"
+        git branch
+
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@users.noreply.github.com"
+
+        git add docs/data.json
+        git add docs/index.html
+        git commit -m "Automated deployment to update codeart in docs $(date '+%Y-%m-%d')"
+        git push origin "${BRANCH_FROM}"
+        # Absolutely must download specific sha of script
+        wget https://raw.githubusercontent.com/sourcecred/sourcecred-action/9e1f0644a2398f8c99b8b19fd685566fce207959/.github/workflows/pull_request.sh
+        chmod +x pull_request.sh
+        TITLE="Updating SourceCred Prototype" /bin/bash -e pull_request.sh
