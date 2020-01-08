@@ -19,7 +19,7 @@ For the second, since the Word2Vec model derives similar embeddings represented 
 this means that similar colors equate to similar terms. You can explore the visualization
 with this knowledge.
 
-Finally, to generate a custom codeart image (with text), the library can
+To generate a custom codeart image (with text), the library can
 also do that, with an [example here](https://vsoch.github.io/codeart-examples/parse_repo/text.html)
 and shown below.
 
@@ -34,6 +34,38 @@ And of course it would be more appropriate to write the name of the software as 
 and of course you have to zoom in to see that the pixels are actually code, colored
 based on their context thanks to Word2Vec.
 
+Finally, to generate a d3 tree that shows code images in a folder on mouseover,
+see [this example](https://vsoch.github.io/codeart-examples/parse_repo/tree.html).
+
+![parse_repo/tree.png](parse_repo/tree.png)
+
+It's not a great visualization, could be a lot better.
+
+### Interactive
+
+The [interactive version](https://vsoch.github.io/codeart-examples/parse_repo/web/) shows the interactive color grid, where groups (in this case extensions) are colored based on salience. Click an extension to see relevant terms in the embeddings model.
+
+### Abstract
+The abstract versions, including those for:
+
+   - [all files](https://vsoch.github.io/codeart-examples/parse_repo/codeartall.html)
+   - [python](https://vsoch.github.io/codeart-examples/parse_repo/codeart.py.html)
+   - [patch](https://vsoch.github.io/codeart-examples/parse_repo/codeart.patch.html) 
+   - [txt](https://vsoch.github.io/codeart-examples/parse_repo/codeart.txt.html) 
+   - [md](https://vsoch.github.io/codeart-examples/parse_repo/codeart.md.html) 
+   - [sh](https://vsoch.github.io/codeart-examples/parse_repo/codeart.sh.html) 
+   - [rst](https://vsoch.github.io/codeart-examples/parse_repo/codeart.rst.html) 
+   - [yaml](https://vsoch.github.io/codeart-examples/parse_repo/codeart.yaml.html) 
+
+are graphics generated with pictures of the code themself. By far, the 
+[all files](https://vsoch.github.io/codeart-examples/parse_repo/codeartall.html)
+generation is the most interesting and abstract!
+
+![parse_repo/all.png](parse_repo/all.png)
+
+
+The interactive version is cooler as you can click on any of the files to see
+in slightly more detail.
 
 ## Parse by Year
 
@@ -86,10 +118,3 @@ that allows for mousing over colors to see terms, and clicking on the list
 of extensions to see relevant terms. The opacity corresponds to the relative
 count of the term for the extension. For spack, most terms will be derived
 from Python files.
-
-### Interactive
-
-The [interactive version](https://vsoch.github.io/codeart-examples/parse_repo/web/) shows the interactive color grid, where groups (in this case extensions) are colored based on salience. Click an extension to see relevant terms in the embeddings model.
-
-### Abstract
-The abstract versions, including those for [no extension](https://vsoch.github.io/codeart-examples/parse_repo/spack/codeart.html), [python](https://vsoch.github.io/codeart-examples/parse_repo/spack/codeart.py.html) and [patch](https://vsoch.github.io/codeart-examples/parse_repo/spack/codeart.patch.html) files are graphics generated with pictures of the code themself.
