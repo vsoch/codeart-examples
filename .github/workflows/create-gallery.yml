@@ -12,8 +12,12 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v1
+    - name: Setup conda environment
+      run: conda env create --quiet --name codeart
     - name: Generate Text CodeArt
       run: |
+        export PATH="/usr/share/miniconda/bin:$PATH"
+        source activate codeart
         git clone https://github.com/vsoch/codeart
         cd codeart
         python setup.py install
