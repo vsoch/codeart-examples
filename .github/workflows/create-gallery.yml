@@ -2,9 +2,6 @@ name: generate-codeart
 
 on:
   pull_request: []
-  push:
-    branches:
-      - master
 
 jobs:
   GenerateCodeArt:
