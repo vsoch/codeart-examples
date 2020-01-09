@@ -120,3 +120,11 @@ that allows for mousing over colors to see terms, and clicking on the list
 of extensions to see relevant terms. The opacity corresponds to the relative
 count of the term for the extension. For spack, most terms will be derived
 from Python files.
+
+## GitHub Workflow
+
+A [github workflow](.github/workflows/create-gallery.yml) is provided to create a gallery!
+The workflow opens a pull request, and deploys the files to the docs folder. You can see
+the live version [here](https://vsoch.github.io/codeart-examples/docs/).
+
+![docs/codeart.png](docs/codeart.png)
