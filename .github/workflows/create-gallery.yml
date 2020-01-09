@@ -38,6 +38,7 @@ jobs:
         git config --global user.email "github-actions@users.noreply.github.com"
 
         git add docs/index.html
+        git add docs/images/*.png
         git commit -m "Automated deployment to update codeart in docs $(date '+%Y-%m-%d')"
         git push origin "${BRANCH_FROM}"
 
