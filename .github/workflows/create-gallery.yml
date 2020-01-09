@@ -19,7 +19,7 @@ jobs:
         export PATH="/usr/share/miniconda/bin:$PATH"
         source activate codeart
         pip install codeart
-        mkdir -p docs && cd docs
+        mkdir -p docs
         codeart textart --root ${PWD} --text codeart --outdir docs/
     - name: Open Pull Request
       env:
